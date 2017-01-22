@@ -1,0 +1,2 @@
+# distro
+master install script
