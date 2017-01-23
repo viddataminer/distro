@@ -58,7 +58,7 @@ echo ""
 
 echo "Please select one of the following options:"
 echo ""
-echo "  1) Setup the Aggregator and Appliance - the full Apocalypse"
+echo "  1) Setup the Aggregator and Appliance"
 #echo ""
 echo "  2) Setup the Aggregator - including Nagios and associated tools."
 #echo ""
@@ -124,12 +124,16 @@ elif [ "${junk}" = "1" ]; then
     git init
     git clone https://viddataminer:datamine1@github.com/viddataminer/aggregator.git v1
     cp v1/* .
+echo "ready to install ??"
+read junk
+    chmod +x ./install_agg.sh
     ./install_agg.sh
     cd ${homedir}
     mkdir app
     cd app
     git clone https://viddataminer:datamine1@github.com/viddataminer/appliance.git v1
     cp v1/* .
+    chmod +x ./install_app.sh
     ./install_app.sh all full
     cd ${homedir}
 elif [ "${junk}" = "9" ]; then
