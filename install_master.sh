@@ -119,10 +119,17 @@ elif [ "${junk}" = "8" ]; then
     ./install_app.sh plugins_only
     cd ${homedir}
 elif [ "${junk}" = "1" ]; then
+    mkdir agg
     cd agg
+    git init
+    git clone https://viddataminer:datamine1@github.com/viddataminer/aggregator.git v1
+    cp v1/* .
     ./install_agg.sh
     cd ${homedir}
+    mkdir app
     cd app
+    git clone https://viddataminer:datamine1@github.com/viddataminer/appliance.git v1
+    cp v1/* .
     ./install_app.sh all full
     cd ${homedir}
 elif [ "${junk}" = "9" ]; then
