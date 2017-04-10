@@ -140,26 +140,32 @@ read junk
 elif [ "${junk}" = "0" ]; then
     echo "What is you base path for install?"
     read base_path
+    mkdir -p $base_path/bin
     mkdir aggbin
     cd aggbin
     git init
+    echo git clone https://viddataminer:datamine1@github.com/viddataminer/aggbin v1
     git clone https://viddataminer:datamine1@github.com/viddataminer/aggbin v1
     cp v1/* $base_path/bin
     cd ${homedir}
     mkdir appbin
     cd appbin
+    echo git clone https://viddataminer:datamine1@github.com/viddataminer/appbin.git v1
     git clone https://viddataminer:datamine1@github.com/viddataminer/appbin.git v1
     cp v1/* $base_path/bin
     cd ${homedir}
     mkdir scripts
     cd scripts
     git clone https://viddataminer:datamine1@github.com/viddataminer/shell_dependencies v1
+    echo git clone https://viddataminer:datamine1@github.com/viddataminer/shell_dependencies v1
     cp v1/* $base_path/bin
     cd ${homedir}
     mkdir other_bins
     cd other_bins
+    echo git clone https://viddataminer:datamine1@github.com/viddataminer/other_bins v1
     git clone https://viddataminer:datamine1@github.com/viddataminer/other_bins v1
     cp v1/* $base_path/bin
+    echo "thats all folks...."
 elif [ "${junk}" = "9" ]; then
     #./show_documentation.sh
     echo "This would be a nice feature, since you requested it... but alas.."

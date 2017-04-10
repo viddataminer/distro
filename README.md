@@ -1,2 +1,3 @@
 # distro
 master install script
+Just run it, and it should be good...
