@@ -40,7 +40,7 @@ fi
 #clear
 
 #echo ""
-echo "This script will set up the Apocalypse Logging, Mining and Monitoring tools"
+echo "This script will set up the Titan Logging, Mining and Monitoring tools"
 echo ""
 #echo "The 'Aggregator' is designed as a 'backend' to Nagios, and"
 #echo "aids in the management and scalability of the Core Nagios Installation."
@@ -58,7 +58,8 @@ echo ""
 
 echo "Please select one of the following options:"
 echo ""
-echo "  1) Setup the Aggregator and Appliance"
+echo "  0) Setup the Aggregator and Appliance Bins Only"
+echo "  1) Setup the Aggregator and Appliance - Build from Source"
 #echo ""
 echo "  2) Setup the Aggregator - including Nagios and associated tools."
 #echo ""
@@ -136,6 +137,29 @@ read junk
     chmod +x ./install_app.sh
     ./install_app.sh all full
     cd ${homedir}
+elif [ "${junk}" = "0" ]; then
+    echo "What is you base path for install?"
+    read base_path
+    mkdir aggbin
+    cd aggbin
+    git init
+    git clone https://viddataminer:datamine1@github.com/viddataminer/aggbin v1
+    cp v1/* $base_path/bin
+    cd ${homedir}
+    mkdir appbin
+    cd appbin
+    git clone https://viddataminer:datamine1@github.com/viddataminer/appbin.git v1
+    cp v1/* $base_path/bin
+    cd ${homedir}
+    mkdir scripts
+    cd scripts
+    git clone https://viddataminer:datamine1@github.com/viddataminer/shell_dependencies v1
+    cp v1/* $base_path/bin
+    cd ${homedir}
+    mkdir other_bins
+    cd other_bins
+    git clone https://viddataminer:datamine1@github.com/viddataminer/other_bins v1
+    cp v1/* $base_path/bin
 elif [ "${junk}" = "9" ]; then
     #./show_documentation.sh
     echo "This would be a nice feature, since you requested it... but alas.."
